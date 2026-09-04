@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview | Sihat Bersama Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   Sihat Bersama - shared stylesheet
+   Style reference: modern Malaysian government portals
+   (floating pill navigation, bright blue gradients, soft
+   rounded cards, generous white space).
+   Class names unchanged, so the HTML stays the same.
+   =========================================================== */
+
+:root{
+  --brand:#1B4DC1;
+  --brand-dark:#12358C;
+  --brand-deep:#0F2547;
+  --cyan:#3FB0F5;
+  --blue-grad:linear-gradient(96deg,#1E6FE8 0%,#3FB0F5 100%);
+  --tint:#EFF6FF;
+  --tint-2:#F4F8FE;
+  --surface:#FFFFFF;
+  --ink:#1E293B;
+  --muted:#64748B;
+  --border:#E3ECF7;
+  --border-strong:#CBDCF0;
+  --amber:#F0A821;
+  --maroon:#C0362C;
+  --head:"Poppins", system-ui, Arial, sans-serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --wrap:1220px;
+  --pad:20px;
+  --r-lg:24px;
+  --r:16px;
+  --r-sm:10px;
+  --shadow-soft:0 4px 20px rgba(27,77,193,.07);
+  --shadow-card:0 6px 28px rgba(27,77,193,.10);
+  --shadow-lift:0 14px 42px rgba(27,77,193,.18);
+}
+
+*{box-sizing:border-box}
+html{font-size:100%; scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--surface); color:var(--ink);
+  font-family:var(--sans); font-size:1rem; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:var(--brand); text-underline-offset:3px}
+a:hover{color:var(--brand-dark)}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, summary:focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:6px}
+h1,h2,h3,h4{margin:0; font-family:var(--head); font-weight:700; line-height:1.2; letter-spacing:-.02em; color:var(--brand)}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1em; padding-left:20px}
+li{margin-bottom:9px}
+code{background:var(--tint); border:1px solid var(--border); border-radius:6px; padding:2px 6px; font-size:.88em}
+
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:var(--pad)}
+.skip{position:absolute; left:-9999px; top:0; background:var(--brand); color:#fff; padding:12px 18px; z-index:300; border-radius:0 0 12px 0}
+.skip:focus{left:0}
+
+/* ---------- utility bar ---------- */
+.utilbar{background:var(--brand-deep); color:#9FB6D6; font-size:.78rem}
+.utilbar-in{display:flex; align-items:center; gap:18px; min-height:38px; flex-wrap:wrap}
+.utilbar a{color:#CFE0F5; text-decoration:none}
+.utilbar a:hover{color:#fff}
+.util-official{margin-right:auto; display:flex; align-items:center; gap:8px}
+.util-official svg{flex:none; color:var(--cyan)}
+.util-links{display:flex; gap:16px}
+.util-tools{display:flex; align-items:center; gap:5px; padding-left:16px; border-left:1px solid rgba(255,255,255,.14)}
+.a11y-btn{
+  background:transparent; border:1px solid rgba(255,255,255,.24); color:#CFE0F5;
+  font:600 .72rem/1 var(--sans); padding:6px 10px; border-radius:999px; cursor:pointer; transition:.15s;
+}
+.a11y-btn:hover{background:rgba(255,255,255,.16); color:#fff}
+
+/* ---------- masthead ---------- */
+.masthead{background:#fff}
+.masthead-in{display:flex; align-items:center; gap:20px; padding-block:22px 10px; flex-wrap:wrap}
+.brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--brand); margin-right:auto}
+.brand-crest{width:52px; height:52px; flex:none}
+.site-name{font-family:var(--head); font-size:1.5rem; font-weight:700; display:block; line-height:1.1; color:var(--brand)}
+.site-sub{display:block; font-family:var(--sans); font-size:.78rem; color:var(--muted); margin-top:3px; font-weight:400}
+.searchbox{display:flex; align-items:center; background:var(--tint-2); border:1px solid var(--border); border-radius:999px; padding:5px 5px 5px 18px}
+.searchbox:focus-within{border-color:var(--cyan); background:#fff; box-shadow:0 0 0 4px rgba(63,176,245,.16)}
+.searchbox input{border:0; background:transparent; padding:9px 0; font:400 .9rem var(--sans); width:180px; color:var(--ink)}
+.searchbox input:focus{outline:none}
+.searchbox button{border:0; background:var(--blue-grad); color:#fff; padding:10px 20px; border-radius:999px; cursor:pointer; font:600 .84rem var(--sans)}
+.searchbox button:hover{filter:brightness(1.06)}
+
+/* ---------- floating pill navigation ---------- */
+.mainnav{position:sticky; top:12px; z-index:60; background:transparent; padding-block:6px 14px}
+.mainnav-in{
+  display:flex; align-items:center; justify-content:center;
+  background:#EDF3FB; border:1px solid #DEE9F7; border-radius:999px;
+  padding:6px 14px; box-shadow:var(--shadow-card);
+}
+.nav-toggle{
+  display:none; background:transparent; border:0; color:var(--brand); padding:12px 6px;
+  font:600 .95rem var(--sans); cursor:pointer; align-items:center; gap:10px;
+}
+.mainnav ul{display:flex; list-style:none; margin:0; padding:0; flex-wrap:wrap; gap:2px; justify-content:center}
+.mainnav li{margin:0}
+.mainnav a{
+  display:block; color:#42546B; text-decoration:none; padding:11px 20px;
+  font-size:.95rem; font-weight:500; border-radius:999px; transition:.16s;
+}
+.mainnav a:hover{background:#fff; color:var(--brand)}
+.mainnav a.is-active{background:var(--blue-grad); color:#fff; font-weight:600; box-shadow:0 4px 14px rgba(30,111,232,.32)}
+
+/* ---------- breadcrumb ---------- */
+.breadcrumb{font-size:.84rem; background:transparent}
+.breadcrumb ol{list-style:none; display:flex; flex-wrap:wrap; gap:9px; margin:0; padding:6px 0 14px}
+.breadcrumb li{margin:0; color:var(--muted)}
+.breadcrumb a{text-decoration:none}
+.breadcrumb li+li::before{content:"›"; margin-right:9px; color:var(--border-strong)}
+
+/* ---------- page header band ---------- */
+.pagehead{
+  background:linear-gradient(180deg,#EFF6FF 0%,#F8FBFF 100%);
+  border:1px solid var(--border); border-radius:var(--r-lg);
+  max-width:calc(var(--wrap) - var(--pad) * 2); margin:0 auto; padding:44px 44px 46px;
+}
+.pagehead h1{font-size:clamp(2rem,4.4vw,2.9rem); position:relative; padding-bottom:16px}
+.pagehead h1::after{content:""; position:absolute; left:0; bottom:0; width:88px; height:4px; border-radius:4px; background:var(--blue-grad)}
+.pagehead p{margin:14px 0 0; color:var(--muted); max-width:72ch; font-size:1.05rem}
+
+/* ---------- layout ---------- */
+.main{padding-block:26px 72px}
+.layout{display:grid; grid-template-columns:270px 1fr; gap:48px; align-items:start; margin-top:40px}
+.sidenav{border:1px solid var(--border); border-radius:var(--r); overflow:hidden; background:#fff; box-shadow:var(--shadow-soft); position:sticky; top:96px}
+.sidenav h2{font-family:var(--sans); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; padding:16px 20px; color:var(--muted); background:var(--tint-2); border-bottom:1px solid var(--border); margin:0; font-weight:600}
+.sidenav ul{list-style:none; margin:0; padding:10px}
+.sidenav li{margin:0}
+.sidenav a{display:block; padding:12px 16px; font-size:.94rem; text-decoration:none; color:#42546B; border-radius:999px; font-weight:500}
+.sidenav a:hover{background:var(--tint); color:var(--brand)}
+.sidenav a.is-active{background:var(--blue-grad); color:#fff; font-weight:600}
+.sidebox{border:1px solid var(--border); border-radius:var(--r); padding:22px; margin-top:20px; background:var(--tint-2); font-size:.92rem}
+.sidebox h3{font-size:1.02rem; margin-bottom:10px}
+.sidebox ul{padding-left:18px; margin-bottom:0}
+.sidebox li{margin-bottom:7px}
+.sidebox p:last-child{margin-bottom:0}
+
+.content h2{font-size:1.85rem; margin:0 0 18px; position:relative; padding-bottom:14px}
+.content h2::after{content:""; position:absolute; left:0; bottom:0; width:64px; height:4px; border-radius:4px; background:var(--blue-grad)}
+.content h3{font-size:1.15rem; margin:32px 0 10px; color:var(--brand-deep)}
+.content section+section{margin-top:60px}
+.content p, .content li{max-width:74ch; color:#374A5F}
+
+/* ---------- home hero ---------- */
+.hero{background:radial-gradient(1100px 460px at 78% 12%, #EAF4FE 0%, rgba(255,255,255,0) 62%), #fff}
+.hero-in{display:grid; grid-template-columns:1.02fr .98fr; gap:56px; align-items:center; padding-block:56px 68px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.14; margin-bottom:22px; position:relative; padding-bottom:20px}
+.hero h1::after{content:""; position:absolute; left:0; bottom:0; width:110px; height:5px; border-radius:5px; background:var(--blue-grad)}
+.hero p{color:var(--muted); max-width:52ch; font-size:1.08rem}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:30px}
+.hero-art{
+  border-radius:var(--r-lg); overflow:hidden; background:linear-gradient(160deg,#EAF4FE,#F7FBFF);
+  border:1px solid var(--border); padding:18px; box-shadow:var(--shadow-card);
+}
+.hero-art svg{width:100%; height:auto; border-radius:var(--r)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:9px; background:var(--blue-grad); color:#fff;
+  text-decoration:none; font:600 .96rem/1 var(--sans); padding:16px 30px; border:0;
+  border-radius:999px; cursor:pointer; box-shadow:0 8px 22px rgba(30,111,232,.28);
+  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;
+}
+.btn::after{content:"→"; font-size:1.05em; line-height:1}
+.btn:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(30,111,232,.36); color:#fff; filter:brightness(1.04)}
+.btn-alt{background:var(--brand-deep); box-shadow:0 8px 22px rgba(15,37,71,.24)}
+.btn-alt:hover{background:#16325C; box-shadow:0 12px 30px rgba(15,37,71,.3)}
+
+/* ---------- announcement strip ---------- */
+.announce{background:transparent; padding-top:6px}
+.announce-in{
+  display:flex; gap:18px; align-items:center; flex-wrap:wrap; font-size:.9rem;
+  background:var(--tint); border:1px solid var(--border); border-radius:999px; padding:12px 24px;
+}
+.announce strong{
+  white-space:nowrap; color:#fff; background:var(--blue-grad); padding:5px 15px;
+  border-radius:999px; font-size:.76rem; letter-spacing:.03em; font-weight:600;
+}
+.announce ul{list-style:none; display:flex; gap:28px; margin:0; padding:0; flex-wrap:wrap}
+.announce li{margin:0; position:relative}
+.announce li+li::before{content:""; position:absolute; left:-15px; top:50%; width:5px; height:5px; border-radius:50%; background:var(--border-strong); transform:translateY(-50%)}
+.announce a{color:#33465E; text-decoration:none; font-weight:500}
+.announce a:hover{color:var(--brand)}
+
+/* ---------- section head ---------- */
+.sec{padding-block:70px}
+.sec-alt{background:linear-gradient(180deg,#F7FBFF 0%,#EFF6FF 100%)}
+.sec-head{margin-bottom:36px; max-width:74ch}
+.sec-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem); position:relative; padding-bottom:16px}
+.sec-head h2::after{content:""; position:absolute; left:0; bottom:0; width:78px; height:4px; border-radius:4px; background:var(--blue-grad)}
+.sec-head p{margin:14px 0 0; color:var(--muted); font-size:1.03rem}
+
+/* ---------- tiles ---------- */
+.tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
+.tile{
+  display:block; background:#fff; border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:30px 26px 28px; text-decoration:none; color:var(--ink); box-shadow:var(--shadow-soft);
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.tile:hover{transform:translateY(-5px); box-shadow:var(--shadow-lift); color:var(--ink)}
+.tile .ico{
+  display:grid; place-items:center; width:72px; height:72px; border-radius:50%;
+  background:radial-gradient(circle at 30% 25%, #FFFFFF 0%, #E4F1FE 55%, #D3E8FD 100%);
+  border:1px solid #DCEBFB; color:var(--brand); margin-bottom:20px;
+}
+.tile h3{font-size:1.08rem; margin-bottom:8px}
+.tile p{margin:0; font-size:.9rem; color:var(--muted); line-height:1.6}
+
+/* ---------- tables ---------- */
+.table{width:100%; border-collapse:separate; border-spacing:0; font-size:.95rem; background:#fff; border:1px solid var(--border); border-radius:var(--r); overflow:hidden}
+.table caption{text-align:left; font-size:.86rem; color:var(--muted); padding-bottom:14px}
+.table th, .table td{padding:16px 20px; vertical-align:top; text-align:left; border-bottom:1px solid var(--border); color:#374A5F}
+.table thead th{
+  background:var(--tint); color:var(--brand); font-family:var(--sans); font-weight:700;
+  font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
+}
+.table tbody tr:last-child th, .table tbody tr:last-child td{border-bottom:0}
+.table tbody tr:hover{background:#F8FBFF}
+.table tbody th[scope="row"]{width:190px; color:var(--brand); font-weight:600; background:var(--tint-2)}
+.table td strong{color:var(--brand)}
+.table-scroll{overflow-x:auto; border-radius:var(--r)}
+
+/* ---------- notice boxes ---------- */
+.notice{border:1px solid var(--border); background:var(--tint); padding:22px 24px; font-size:.95rem; border-radius:var(--r); border-left:5px solid var(--cyan)}
+.notice.warn{border-color:#F6D6D3; background:#FEF4F3; border-left-color:var(--maroon)}
+.notice h3{font-size:1.05rem; margin:0 0 8px}
+.notice.warn h3{color:var(--maroon)}
+.notice p:last-child{margin-bottom:0}
+
+/* ---------- updates list ---------- */
+.updates{list-style:none; margin:0; padding:0}
+.updates li{
+  display:flex; gap:20px; padding:18px 22px; margin:0 0 12px; font-size:.96rem;
+  background:#fff; border:1px solid var(--border); border-radius:var(--r); transition:.16s;
+}
+.updates li:hover{border-color:var(--border-strong); box-shadow:var(--shadow-soft); transform:translateX(3px)}
+.updates time{color:var(--muted); font-size:.82rem; white-space:nowrap; width:104px; flex:none; padding-top:3px}
+.updates a{text-decoration:none; font-weight:600; color:var(--brand-deep)}
+.updates a:hover{color:var(--brand)}
+
+/* ---------- panels ---------- */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:40px}
+.split-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.panel{border:1px solid var(--border); border-radius:var(--r-lg); padding:30px; background:#fff; box-shadow:var(--shadow-soft)}
+.panel h3{font-size:1.18rem; margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+
+/* ---------- gallery ---------- */
+.filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px}
+.filter-btn{
+  background:#fff; border:1px solid var(--border); padding:11px 22px; font:600 .89rem var(--sans);
+  cursor:pointer; border-radius:999px; color:#42546B; transition:.16s;
+}
+.filter-btn:hover{border-color:var(--cyan); color:var(--brand)}
+.filter-btn[aria-pressed="true"]{background:var(--blue-grad); color:#fff; border-color:transparent; box-shadow:0 6px 18px rgba(30,111,232,.28)}
+.grid-photos{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.photo{border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; background:#fff; box-shadow:var(--shadow-soft); transition:.16s}
+.photo:hover{transform:translateY(-5px); box-shadow:var(--shadow-lift)}
+.photo .frame{aspect-ratio:4/3; background:var(--tint); overflow:hidden}
+.photo .frame svg, .photo .frame img{width:100%; height:100%; object-fit:cover}
+.photo figcaption{padding:18px 20px; font-size:.94rem; font-weight:600; color:var(--brand-deep)}
+.photo figcaption span{display:block; color:var(--muted); font-size:.81rem; margin-top:6px; font-weight:400}
+
+/* ---------- faq ---------- */
+.faq details{border:1px solid var(--border); border-radius:var(--r); margin-bottom:14px; background:#fff; overflow:hidden; transition:.16s}
+.faq details[open]{box-shadow:var(--shadow-card); border-color:var(--border-strong)}
+.faq summary{cursor:pointer; padding:20px 58px 20px 24px; font-weight:600; position:relative; list-style:none; font-size:1rem; color:var(--brand-deep); font-family:var(--head)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--brand)}
+.faq summary::after{
+  content:"+"; position:absolute; right:20px; top:50%; transform:translateY(-50%);
+  width:30px; height:30px; border-radius:50%; background:var(--tint); color:var(--brand);
+  display:grid; place-items:center; font-size:1.2rem; font-weight:600; line-height:1;
+}
+.faq details[open] summary{color:var(--brand)}
+.faq details[open] summary::after{content:"–"; background:var(--blue-grad); color:#fff}
+.faq .answer{padding:4px 24px 22px; color:#374A5F}
+.faq .answer p:last-child{margin-bottom:0}
+
+/* ---------- forms ---------- */
+.form{border:1px solid var(--border); border-radius:var(--r-lg); padding:32px; background:#fff; box-shadow:var(--shadow-card)}
+.field{margin-bottom:20px}
+.field label{display:block; font-size:.88rem; font-weight:600; margin-bottom:8px; color:var(--brand-deep)}
+.field .req{color:var(--maroon)}
+.field input, .field select, .field textarea{
+  width:100%; padding:14px 16px; border:1px solid var(--border-strong); border-radius:12px;
+  font:400 .95rem var(--sans); background:var(--tint-2); color:var(--ink); transition:.15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none; background:#fff; border-color:var(--cyan); box-shadow:0 0 0 4px rgba(63,176,245,.16);
+}
+.field textarea{min-height:150px; resize:vertical}
+.hint{font-size:.81rem; color:var(--muted); margin-top:7px}
+.form-status{margin-top:16px; font-size:.92rem; min-height:1.3em; color:var(--brand); font-weight:600}
+.form-status.error{color:var(--maroon)}
+
+/* ---------- footer ---------- */
+.footer{background:linear-gradient(160deg,#12356B 0%,var(--brand-deep) 60%); color:#A9C0DE; margin-top:40px; border-radius:var(--r-lg) var(--r-lg) 0 0}
+.footer a{color:#DFEAF8; text-decoration:none}
+.footer a:hover{color:#fff; text-decoration:underline}
+.footer h3{font-family:var(--sans); font-size:.78rem; color:#fff; margin-bottom:18px; text-transform:uppercase; letter-spacing:.1em; font-weight:700}
+.foot-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1.3fr; gap:44px; padding-block:60px}
+.footer ul{list-style:none; margin:0; padding:0}
+.footer li{font-size:.91rem; margin-bottom:11px}
+.footer address{font-style:normal; font-size:.91rem; line-height:1.9}
+.socials{display:flex; gap:10px; margin-top:18px}
+.socials a{width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:grid; place-items:center; color:#DFEAF8; transition:.15s}
+.socials a:hover{background:var(--blue-grad); border-color:transparent; color:#fff}
+.foot-meta{border-top:1px solid rgba(255,255,255,.12); padding-block:22px; display:flex; flex-wrap:wrap; gap:16px 34px; font-size:.83rem}
+.foot-meta .counter{display:flex; align-items:center; gap:9px}
+.foot-meta .counter b{font-size:1.05rem; color:#fff; font-variant-numeric:tabular-nums; font-family:var(--head)}
+.foot-base{border-top:1px solid rgba(255,255,255,.12); padding-block:20px; font-size:.83rem; display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between}
+.foot-links{display:flex; gap:22px; flex-wrap:wrap}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr; gap:32px}
+  .sidenav{position:static}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-in{grid-template-columns:1fr; padding-block:40px 56px}
+  .hero-art{order:-1}
+  .grid-photos{grid-template-columns:repeat(2,1fr)}
+  .mainnav a{padding:10px 14px; font-size:.9rem}
+  .pagehead{padding:34px 28px 36px}
+}
+@media (max-width:820px){
+  .masthead-in{gap:14px}
+  .searchbox{width:100%}
+  .searchbox input{width:100%}
+  .mainnav{top:0; padding-block:4px 12px}
+  .mainnav-in{border-radius:var(--r); flex-direction:column; align-items:stretch; padding:6px 10px}
+  .nav-toggle{display:flex; justify-content:space-between}
+  .mainnav ul{display:none; flex-direction:column; width:100%; padding-bottom:8px; gap:2px}
+  .mainnav ul[data-open="true"]{display:flex}
+  .mainnav a{text-align:left; padding:13px 16px}
+  .sec{padding-block:48px}
+  .split, .split-3, .grid-photos, .tiles, .foot-grid{grid-template-columns:1fr}
+  .updates li{flex-direction:column; gap:4px}
+  .updates time{width:auto}
+  .table tbody th[scope="row"]{width:auto}
+  .announce-in{border-radius:var(--r); padding:14px 18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none !important; transition:none !important}}
+@media print{
+  .utilbar,.mainnav,.searchbox,.sidenav,.footer,.breadcrumb,.hero-art{display:none}
+  body{font-size:11pt}
+  .hero,.pagehead{background:none; border:0}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== utility bar ===== -->
+<div class="utilbar">
+  <div class="wrap utilbar-in">
+    <span class="util-official">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z"/></svg>
+      Health awareness portal by the Sihat Bersama student initiative
+    </span>
+    <span class="util-links">
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#footer">Sitemap</a>
+    </span>
+    <span class="util-tools">
+      <button class="a11y-btn" id="textSmaller" type="button" title="Smaller text">A-</button>
+      <button class="a11y-btn" id="textNormal" type="button" title="Normal text">A</button>
+      <button class="a11y-btn" id="textLarger" type="button" title="Larger text">A+</button>
+    </span>
+  </div>
+</div>
+
+<!-- ===== masthead ===== -->
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-crest" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 3l26 9v18c0 16-11 26-26 31C17 56 6 46 6 30V12z" fill="#0B3A63"/>
+        <path d="M32 9l20 7v14c0 12.5-8.4 20.6-20 24.6C20.4 50.6 12 42.5 12 30V16z" fill="#14639E"/>
+        <path d="M16 32h8l4-9 5 18 4-9h11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 20h6v4h4v6h-4v4h-6v-4h-4v-6h4z" fill="#B3892A"/>
+      </svg>
+      <span>
+        <span class="site-name">Sihat Bersama</span>
+        <span class="site-sub">Health Awareness &amp; Disease Prevention Portal</span>
+      </span>
+    </a>
+    <form class="searchbox" id="siteSearch" role="search">
+      <label class="skip" for="q">Search this site</label>
+      <input id="q" type="search" placeholder="Search health topics">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</header>
+
+<!-- ===== main navigation ===== -->
+<nav class="mainnav" aria-label="Main">
+  <div class="wrap mainnav-in">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlist">
+      <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="2"/></svg>
+      Menu
+    </button>
+    <ul id="navlist">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" data-page="index.html" hidden>
+
+<main id="main">
+
+<!-- ===== hero ===== -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <h1>Public health information you can act on</h1>
+      <p>Sihat Bersama explains how diseases spread in Malaysian homes, schools and workplaces, what causes them, and the practical steps that stop them. Written in plain language, reviewed against Ministry of Health and World Health Organization guidance.</p>
+      <div class="hero-actions">
+        <a class="btn" href="services.html">Browse health topics</a>
+        <a class="btn btn-alt" href="about.html">About this initiative</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 520 340" role="img" aria-label="Illustration of a community clinic and neighbourhood">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F5FAFF"/><stop offset="1" stop-color="#E4F1FD"/>
+          </linearGradient>
+        </defs>
+        <rect width="520" height="340" rx="12" fill="url(#sky)"/>
+        <circle cx="440" cy="72" r="34" fill="#DCEDFD"/>
+        <circle cx="440" cy="72" r="19" fill="#3FB0F5" opacity=".55"/>
+        <path d="M0 236c90-38 150-6 230-26s170-48 290-10v140H0z" fill="#CDE6FB"/>
+        <path d="M0 280c110-28 190 4 270-12s160-26 250-4v76H0z" fill="#A8D5F7"/>
+        <g fill="#fff" stroke="#BBDCF6" stroke-width="1.5">
+          <path d="M70 214l46-32 46 32v58H70z"/>
+          <path d="M196 228l40-28 40 28v44h-80z"/>
+          <path d="M306 210l50-34 50 34v62H306z"/>
+        </g>
+        <g fill="#7FC3F2">
+          <rect x="90" y="228" width="18" height="18" rx="3"/>
+          <rect x="124" y="228" width="18" height="18" rx="3"/>
+          <rect x="224" y="240" width="16" height="16" rx="3"/>
+          <rect x="336" y="228" width="20" height="20" rx="3"/>
+          <rect x="368" y="228" width="20" height="20" rx="3"/>
+        </g>
+        <rect x="228" y="150" width="14" height="42" rx="4" fill="#1E6FE8"/>
+        <rect x="214" y="164" width="42" height="14" rx="4" fill="#1E6FE8"/>
+        <path d="M0 120h130l24-52 30 100 26-70 24 22h286" fill="none" stroke="#1B4DC1" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== announcements ===== -->
+<div class="announce">
+  <div class="wrap announce-in">
+    <strong>Latest:</strong>
+    <ul>
+      <li><a href="services.html">New guide on weekly Aedes checks at home</a></li>
+      <li><a href="faq.html">Updated answers on adult vaccination</a></li>
+      <li><a href="gallery.html">Photos from the school hygiene roadshow</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== quick access ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Main topics</h2>
+      <p>Seven areas of public health, each written for readers with no medical background.</p>
+    </div>
+
+    <div class="tiles">
+      <a class="tile" href="services.html#prevention">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2M9.5 10h.01M14 14h.01M10 15h.01M15 9.5h.01"/></svg></span>
+        <h3>Disease prevention</h3>
+        <p>Common diseases and how to stop them spreading.</p>
+      </a>
+      <a class="tile" href="services.html#hygiene">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 11V5a2 2 0 0 1 4 0v6"/><path d="M5 11h13a2 2 0 0 1 2 2v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3a2 2 0 0 1 1-2z"/></svg></span>
+        <h3>Health and hygiene</h3>
+        <p>Handwashing, food safety and a clean home.</p>
+      </a>
+      <a class="tile" href="services.html#vaccination">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17 3l4 4M18.5 5.5L12 12l-4 1 1-4z"/><path d="M11 9l4 4M4 20l4-4"/></svg></span>
+        <h3>Vaccination</h3>
+        <p>How vaccines work and who they protect.</p>
+      </a>
+      <a class="tile" href="services.html#lifestyle">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0z"/><path d="M12 3c2 2 2 4 0 6M8 5c1.4 1.4 1.4 2.6 0 4"/></svg></span>
+        <h3>Healthy lifestyle</h3>
+        <p>Nutrition, exercise, sleep and daily habits.</p>
+      </a>
+      <a class="tile" href="services.html#detection">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5M11 8.5v5"/></svg></span>
+        <h3>Early detection</h3>
+        <p>Warning signs and screening by age group.</p>
+      </a>
+      <a class="tile" href="services.html#education">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2z"/></svg></span>
+        <h3>Health education</h3>
+        <p>Articles, guides and printable resources.</p>
+      </a>
+      <a class="tile" href="services.html#community">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></span>
+        <h3>Community awareness</h3>
+        <p>Campaign materials for schools and workplaces.</p>
+      </a>
+      <a class="tile" href="contact.html">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <h3>Contact us</h3>
+        <p>Questions, corrections and talk invitations.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== common cases table ===== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Common health problems in Malaysia</h2>
+      <p>What causes them, and the action that makes the biggest difference.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="table">
+        <caption>Summary of frequently reported conditions. Refer to a clinic for diagnosis and treatment.</caption>
+        <thead>
+          <tr><th scope="col">Condition</th><th scope="col">Type</th><th scope="col">Main cause</th><th scope="col">What to do</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dengue</strong></td>
+            <td>Mosquito-borne</td>
+            <td>Aedes mosquitoes breeding in clean, still water around the house.</td>
+            <td>Empty and scrub water containers weekly, cover tanks, use repellent, see a doctor early if fever comes with body aches or rash.</td>
+          </tr>
+          <tr>
+            <td><strong>Type 2 diabetes</strong></td>
+            <td>Non-communicable</td>
+            <td>Sweet drinks, refined carbohydrates, low activity and extra weight around the waist.</td>
+            <td>Cut sugared drinks first, walk 30 minutes most days, ask for a blood sugar test if there is family history.</td>
+          </tr>
+          <tr>
+            <td><strong>High blood pressure</strong></td>
+            <td>Non-communicable</td>
+            <td>Salty and processed food, low activity, poor sleep and long-term stress.</td>
+            <td>Taste food before adding salt or sauce, cook at home more often, check your reading at least once a year.</td>
+          </tr>
+          <tr>
+            <td><strong>Obesity</strong></td>
+            <td>Risk factor</td>
+            <td>Large portions of fried and sweetened food, late-night eating, long hours seated.</td>
+            <td>Change one meal a day rather than the whole diet, drink plain water, build movement into the daily routine.</td>
+          </tr>
+          <tr>
+            <td><strong>Tuberculosis</strong></td>
+            <td>Airborne, curable</td>
+            <td>Bacteria spread in crowded, poorly ventilated spaces, often ignored as a long cough.</td>
+            <td>Get tested if a cough lasts more than two weeks, keep rooms ventilated, complete the full treatment course.</td>
+          </tr>
+          <tr>
+            <td><strong>Hand, foot and mouth disease</strong></td>
+            <td>Viral, children</td>
+            <td>Virus passed through saliva, unwashed hands and shared toys in nurseries and kindergartens.</td>
+            <td>Wash hands with soap, disinfect toys and surfaces, keep a sick child at home until recovered.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice warn" style="margin-top:18px">
+      <h3>This portal does not replace medical care</h3>
+      <p>All content here is general health education. If you have symptoms that worry you, go to the nearest clinic or hospital and speak to a medical professional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== purpose + updates ===== -->
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <div class="sec-head"><h2>Why this portal exists</h2></div>
+      <p>Public health protects whole communities rather than treating one patient at a time. Clean water, handwashing, vaccination and early screening prevent far more illness than any medicine taken after the fact.</p>
+      <p>Most health information online is either too technical or plainly wrong. We collect what matters, rewrite it in plain language, and point readers to the right service when professional care is needed.</p>
+      <p><a href="about.html">Read our mission and vision</a></p>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Recent updates</h2></div>
+      <ul class="updates">
+        <li><time datetime="2026-08-28">28 Aug 2026</time><a href="services.html#prevention">Dengue prevention guide revised for the rainy season</a></li>
+        <li><time datetime="2026-08-14">14 Aug 2026</time><a href="services.html#vaccination">Adult vaccination page updated</a></li>
+        <li><time datetime="2026-07-30">30 Jul 2026</time><a href="gallery.html">School hygiene roadshow photos published</a></li>
+        <li><time datetime="2026-07-11">11 Jul 2026</time><a href="services.html#detection">Screening checklist added for ages 30 and above</a></li>
+        <li><time datetime="2026-06-25">25 Jun 2026</time><a href="faq.html">Six new questions added to the FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== footer ===== -->
+
+</div>
+<div class="page" data-page="about.html" hidden>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol><li><a href="index.html">Home</a></li><li aria-current="page">About Us</li></ol>
+  </div>
+</nav>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>About Us</h1>
+    <p>Who we are, what this portal is for, and how our content is prepared and reviewed.</p>
+  </div>
+</div>
+
+<main id="main" class="main">
+<div class="wrap layout">
+<aside>
+  <nav class="sidenav" aria-label="Section">
+    <h2>Site sections</h2>
+    <ul>
+      <li><a class="is-active" href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebox">
+    <h3>Need help now?</h3>
+    <p>For symptoms that worry you, visit the nearest klinik kesihatan. In an emergency call <strong>999</strong>.</p>
+  </div>
+</aside>
+
+<div class="content">
+  <section>
+    <h2>Who we are</h2>
+    <p>Sihat Bersama is a student initiative based in Bukit Jalil, Kuala Lumpur. We build and maintain this portal as an open health education resource for the Malaysian public. The site is free to use, carries no advertising, and collects no personal data beyond what you choose to send us through the contact form.</p>
+    <p>The team works with public guidance issued by the Ministry of Health Malaysia and the World Health Organization, rewriting it in plain language so that readers without a medical background can follow it.</p>
+  </section>
+
+  <section>
+    <h2>Purpose of this portal</h2>
+    <p>To educate people about public health and disease prevention. Every page answers three questions: what the problem is, what causes it, and what a reader can do about it this week.</p>
+  </section>
+
+  <section>
+    <h2>Mission and vision</h2>
+    <div class="split">
+      <div class="panel">
+        <h3>Mission</h3>
+        <p>To promote healthier communities by preventing diseases, raising public health awareness, and providing accessible information and resources that empower individuals to make informed decisions about their health.</p>
+      </div>
+      <div class="panel">
+        <h3>Vision</h3>
+        <p>To create a healthier world where everyone has the knowledge, resources and support needed to prevent diseases, maintain good health, and live a longer, healthier life.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <p>Public health plays an important role in protecting communities from disease and improving quality of life. This portal was created to provide simple and reliable information on disease prevention, healthy lifestyles, hygiene, vaccination and early detection in one place.</p>
+    <p>The idea began with a campus project on dengue. While preparing it, we found that most of the material available online was either written for clinicians or repeated advice with no source behind it. We decided to keep the work going after the semester ended and expand it to the other health issues Malaysian families deal with most often. By raising awareness and encouraging preventive action, we aim to help individuals and communities stay healthier and reduce the spread of disease.</p>
+  </section>
+
+  <section>
+    <h2>Team members</h2>
+    <p>Replace the names, roles and email addresses below with your own team details.</p>
+    <div class="table-scroll">
+      <table class="table">
+        <thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Responsibility</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Aina Rahim</strong></td><td>Project lead</td><td>Planning, content direction and partner engagement</td></tr>
+          <tr><td><strong>Harith Zaki</strong></td><td>Research</td><td>Source checking and article drafting</td></tr>
+          <tr><td><strong>Mei Ling Tan</strong></td><td>Design and development</td><td>Site design, front end and accessibility</td></tr>
+          <tr><td><strong>Suresh Kumar</strong></td><td>Outreach</td><td>School and community programmes, social media</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>How we check our content</h2>
+    <ol>
+      <li>A topic is drafted from named public sources, usually Ministry of Health or World Health Organization material.</li>
+      <li>A second team member checks every claim against those sources before publishing.</li>
+      <li>The page lists its references at the bottom and carries a review date.</li>
+      <li>Every page is reviewed again each semester, or sooner if official guidance changes.</li>
+      <li>Reported mistakes are checked within a few working days and corrections are noted on the page.</li>
+    </ol>
+    <div class="notice">
+      <h3>Found something wrong?</h3>
+      <p>Tell us through the <a href="contact.html">contact form</a> and point to the paragraph. Corrections are welcome and we credit readers who report them.</p>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+
+
+</div>
+<div class="page" data-page="services.html" hidden>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol><li><a href="index.html">Home</a></li><li aria-current="page">Services</li></ol>
+  </div>
+</nav>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>Services</h1>
+    <p>The information services this portal provides, who each one is for, and the benefit it offers.</p>
+  </div>
+</div>
+
+<main id="main" class="main">
+<div class="wrap layout">
+<aside>
+  <nav class="sidenav" aria-label="Section">
+    <h2>Site sections</h2>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a class="is-active" href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebox">
+    <h3>On this page</h3>
+    <ul style="padding-left:18px; margin:0">
+      <li><a href="#prevention">Disease prevention</a></li>
+      <li><a href="#hygiene">Health and hygiene</a></li>
+      <li><a href="#vaccination">Vaccination</a></li>
+      <li><a href="#lifestyle">Healthy lifestyle</a></li>
+      <li><a href="#detection">Early detection</a></li>
+      <li><a href="#education">Health education</a></li>
+      <li><a href="#community">Community awareness</a></li>
+    </ul>
+  </div>
+</aside>
+
+<div class="content">
+  <section>
+    <h2>What we provide</h2>
+    <p>This portal is an information service. We do not diagnose, prescribe or sell anything. Everything listed below is free to read, download and share.</p>
+    <div class="table-scroll">
+      <table class="table">
+        <caption>Summary of services and who they are aimed at.</caption>
+        <thead><tr><th scope="col">Service</th><th scope="col">Format</th><th scope="col">Intended for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Disease prevention</strong></td><td>Guides and checklists</td><td>General public, families</td></tr>
+          <tr><td><strong>Health and hygiene</strong></td><td>Short how-to articles</td><td>Households, food handlers</td></tr>
+          <tr><td><strong>Vaccination awareness</strong></td><td>Explainers and schedules</td><td>Parents, adults, caregivers</td></tr>
+          <tr><td><strong>Healthy lifestyle</strong></td><td>Practical tips</td><td>Working adults, students</td></tr>
+          <tr><td><strong>Early detection</strong></td><td>Warning sign lists</td><td>Adults aged 30 and above</td></tr>
+          <tr><td><strong>Health education</strong></td><td>Articles and printables</td><td>Teachers, students</td></tr>
+          <tr><td><strong>Community awareness</strong></td><td>Campaign materials</td><td>Schools, offices, residents</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="prevention">
+    <h2>Disease prevention</h2>
+    <p>Information on the diseases reported most often in Malaysia and the actions that reduce their spread. Each guide covers the cause, how it spreads, warning signs, and prevention at home.</p>
+    <h3>Covered topics</h3>
+    <ul>
+      <li>Dengue and Aedes control around the house</li>
+      <li>Tuberculosis and long-lasting coughs</li>
+      <li>Hand, foot and mouth disease in nurseries and kindergartens</li>
+      <li>Influenza and other respiratory infections</li>
+      <li>Food and water-borne illness, including food poisoning</li>
+    </ul>
+    <h3>Benefit</h3>
+    <p>Readers learn which single action matters most for each disease instead of a long list they will not follow.</p>
+  </section>
+
+  <section id="hygiene">
+    <h2>Health and hygiene tips</h2>
+    <p>Everyday practices that break the chain of infection: handwashing with soap at the right moments, safe food handling and storage, clean drinking water, toilet and bathroom hygiene, and keeping shared spaces ventilated.</p>
+    <h3>Benefit</h3>
+    <p>These habits cost nothing and prevent a large share of common infections, especially in households with young children or older adults.</p>
+  </section>
+
+  <section id="vaccination">
+    <h2>Vaccination awareness</h2>
+    <p>Plain explanations of how vaccines train the immune system, what the childhood immunisation schedule covers, which vaccines adults may still need, and what the common side effects look like.</p>
+    <h3>Benefit</h3>
+    <p>Parents and adults get answers to the questions that usually cause hesitation, with links to the official schedule rather than rumours from social media.</p>
+  </section>
+
+  <section id="lifestyle">
+    <h2>Healthy lifestyle</h2>
+    <p>Nutrition, physical activity, sleep and stress, written around local food and local routines. Practical swaps for hawker meals, portion guidance, simple exercise that needs no gym, and sleep habits for shift workers.</p>
+    <h3>Benefit</h3>
+    <p>Small, realistic changes that lower the risk of diabetes, high blood pressure and heart disease over time.</p>
+  </section>
+
+  <section id="detection">
+    <h2>Early detection</h2>
+    <p>Warning signs worth acting on, and which screenings to request at each stage of life: blood pressure, blood sugar, cholesterol, body weight, and cancer screening where it applies.</p>
+    <div class="notice">
+      <h3>Rule of thumb</h3>
+      <p>A cough lasting more than two weeks, unexplained weight loss, a lump that does not go away, or blood where there should be none are all reasons to see a doctor without waiting.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Health education</h2>
+    <p>Short articles, step-by-step guides and printable resources written for the general public. Teachers may use them in class, and community groups may reproduce them with credit.</p>
+  </section>
+
+  <section id="community">
+    <h2>Community awareness</h2>
+    <p>Materials and simple activity plans for running an awareness session in a school, office or neighbourhood: poster templates, a talk outline, a checklist for a residential Aedes walkabout, and follow-up ideas.</p>
+    <p><a href="contact.html">Invite us to run a session</a> if your group would like help getting started.</p>
+  </section>
+
+  <section>
+    <h2>Why use this portal</h2>
+    <div class="split-3">
+      <div class="panel"><h3>Fast and reliable</h3><p>Light pages that load quickly on mobile data, with every claim traceable to a named public source.</p></div>
+      <div class="panel"><h3>Easy to use</h3><p>Short sections and plain sentences. Technical terms are explained the first time they appear.</p></div>
+      <div class="panel"><h3>Properly researched</h3><p>Two reviewers per page, references listed, and a review date shown on every article.</p></div>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+
+
+</div>
+<div class="page" data-page="gallery.html" hidden>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol><li><a href="index.html">Home</a></li><li aria-current="page">Gallery</li></ol>
+  </div>
+</nav>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>Gallery</h1>
+    <p>Photographs and recordings from our awareness sessions, school visits and community programmes.</p>
+  </div>
+</div>
+
+<main id="main" class="main">
+<div class="wrap layout">
+<aside>
+  <nav class="sidenav" aria-label="Section">
+    <h2>Site sections</h2>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a class="is-active" href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebox">
+    <h3>Using these photos</h3>
+    <p>Photos may be reused for non-commercial health awareness work with credit to Sihat Bersama.</p>
+  </div>
+</aside>
+
+<div class="content">
+  <section>
+    <h2>Activity photos</h2>
+    <p>Photographs from our awareness sessions, school visits and community programmes. Filter by category below.</p>
+
+    <div class="filters" role="group" aria-label="Filter photos by category">
+      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" type="button" data-filter="campaign" aria-pressed="false">Community campaigns</button>
+      <button class="filter-btn" type="button" data-filter="school" aria-pressed="false">School programmes</button>
+      <button class="filter-btn" type="button" data-filter="talk" aria-pressed="false">Talks and screening</button>
+    </div>
+
+    <div class="grid-photos">
+      <figure class="photo" data-cat="campaign">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of an awareness booth" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#0B3A63"/><path d="M0 210c80-30 140 8 200-8s120-34 200-8v106H0z" fill="#14639E"/><rect x="80" y="120" width="120" height="90" rx="6" fill="#E8F0F7"/><circle cx="300" cy="120" r="40" fill="#B3892A"/></svg></div>
+        <figcaption>Dengue awareness booth at the community hall<span>Bukit Jalil, 12 July 2026</span></figcaption>
+      </figure>
+      <figure class="photo" data-cat="school">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of a handwashing demonstration" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#E8F0F7"/><circle cx="200" cy="130" r="62" fill="#0B3A63"/><path d="M170 130h60M200 100v60" stroke="#B3892A" stroke-width="10" stroke-linecap="round"/><rect x="90" y="235" width="220" height="16" rx="8" fill="#14639E"/></svg></div>
+        <figcaption>Handwashing demonstration with Year 3 pupils<span>SK Bukit Jalil, 5 July 2026</span></figcaption>
+      </figure>
+      <figure class="photo" data-cat="campaign">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of a neighbourhood clean-up" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#14639E"/><path d="M0 200c90-24 150 12 220-6s110-24 180-2v108H0z" fill="#0B3A63"/><rect x="140" y="90" width="90" height="90" rx="8" fill="#E8F0F7"/><circle cx="300" cy="110" r="34" fill="#B3892A"/></svg></div>
+        <figcaption>Weekly search and destroy walkabout with residents<span>Taman Sri Endah, 28 June 2026</span></figcaption>
+      </figure>
+      <figure class="photo" data-cat="talk">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of a health talk" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#0B3A63"/><rect x="50" y="70" width="300" height="130" rx="8" fill="#E8F0F7"/><path d="M110 135h70M145 100v70" stroke="#B3892A" stroke-width="12" stroke-linecap="round"/><rect x="120" y="230" width="160" height="16" rx="8" fill="#14639E"/></svg></div>
+        <figcaption>Vaccination talk for parents and caregivers<span>Community centre, 14 June 2026</span></figcaption>
+      </figure>
+      <figure class="photo" data-cat="school">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of a nutrition workshop" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#E8F0F7"/><circle cx="200" cy="150" r="92" fill="#0B3A63"/><path d="M200 58a92 92 0 0 1 0 184z" fill="#B3892A"/><circle cx="200" cy="150" r="30" fill="#14639E"/></svg></div>
+        <figcaption>Balanced plate workshop for secondary students<span>SMK Seri Petaling, 30 May 2026</span></figcaption>
+      </figure>
+      <figure class="photo" data-cat="talk">
+        <div class="frame"><svg viewBox="0 0 400 300" role="img" aria-label="Placeholder photo of a screening booth" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#14639E"/><rect x="70" y="90" width="260" height="120" rx="10" fill="#E8F0F7"/><path d="M100 150h40l16-34 20 66 16-42 12 10h96" fill="none" stroke="#0B3A63" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <figcaption>Blood pressure screening with a volunteer nurse<span>Ramadan bazaar, 18 March 2026</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="notice" style="margin-top:22px">
+      <h3>Replacing the placeholders</h3>
+      <p>Each frame currently holds a placeholder graphic. To use a real photo, replace the contents of <code>&lt;div class="frame"&gt;</code> with <code>&lt;img src="assets/img/your-photo.jpg" alt="describe the photo"&gt;</code>. Keep images around 1200 pixels wide and under 300 KB so pages stay fast.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Videos</h2>
+    <p>Recorded talks and short clips can be embedded here. Paste a YouTube embed inside the wrapper below and it will stay responsive on mobile.</p>
+    <div style="position:relative; padding-top:56.25%; background:var(--grey); border:1px solid var(--border)">
+      <p style="position:absolute; inset:0; display:grid; place-items:center; margin:0; color:var(--muted); font-size:.9rem; text-align:center; padding:16px">
+        Video slot. Replace this block with an iframe embed set to width 100% and height 100%.
+      </p>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+
+
+</div>
+<div class="page" data-page="faq.html" hidden>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol><li><a href="index.html">Home</a></li><li aria-current="page">FAQ</li></ol>
+  </div>
+</nav>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>FAQ</h1>
+    <p>Common questions about this portal, where our information comes from, and how to reuse it.</p>
+  </div>
+</div>
+
+<main id="main" class="main">
+<div class="wrap layout">
+<aside>
+  <nav class="sidenav" aria-label="Section">
+    <h2>Site sections</h2>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a class="is-active" href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebox">
+    <h3>Still stuck?</h3>
+    <p>If your question is not answered here, send it through the <a href="contact.html">contact form</a>. We reply within two working days.</p>
+  </div>
+</aside>
+
+<div class="content">
+  <section>
+    <h2>Before you start</h2>
+    <div class="notice warn">
+      <h3>Medical emergencies</h3>
+      <p>This page answers questions about the portal and general health topics. It is not a triage service. For chest pain, difficulty breathing, heavy bleeding, fits or sudden weakness, call <strong>999</strong> or go to the nearest emergency department immediately.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>General</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this portal a replacement for seeing a doctor?</summary>
+        <div class="answer"><p>No. Everything here is general health education. If you have symptoms, or something feels wrong, go to a clinic or hospital and speak to a medical professional. In an emergency call 999.</p></div>
+      </details>
+      <details>
+        <summary>Do I need to pay or create an account?</summary>
+        <div class="answer"><p>No. The portal is free to read and share. There is no sign-up, no paywall and no advertising.</p></div>
+      </details>
+      <details>
+        <summary>Who runs this website?</summary>
+        <div class="answer"><p>A student team based in Kuala Lumpur. Details of the members and their roles are on the About Us page.</p></div>
+      </details>
+    </div>
+  </section>
+  <section>
+    <h2>Content and sources</h2>
+    <div class="faq">
+      <details>
+        <summary>Where does your information come from?</summary>
+        <div class="answer"><p>Public guidance issued by the Ministry of Health Malaysia and the World Health Organization, rewritten in plain language. References are listed at the bottom of each article.</p></div>
+      </details>
+      <details>
+        <summary>How often is content updated?</summary>
+        <div class="answer"><p>Every page is reviewed at least once a semester, and sooner if official guidance changes. The review date appears on each page.</p></div>
+      </details>
+      <details>
+        <summary>I found a mistake. How do I report it?</summary>
+        <div class="answer"><p>Use the contact form and point to the paragraph in question. Corrections are checked within a few working days and noted on the page.</p></div>
+      </details>
+    </div>
+  </section>
+  <section>
+    <h2>Using our material</h2>
+    <div class="faq">
+      <details>
+        <summary>Can I use your content for a school or workplace campaign?</summary>
+        <div class="answer"><p>Yes, as long as you credit Sihat Bersama and do not change the meaning of the health advice. Ask us if you need a printable version.</p></div>
+      </details>
+      <details>
+        <summary>Can you speak at our school, mosque or office?</summary>
+        <div class="answer"><p>We run sessions where our schedule allows. Send the date, location and expected audience size through the contact form.</p></div>
+      </details>
+      <details>
+        <summary>Can we translate your pages?</summary>
+        <div class="answer"><p>Yes, with credit. Send us the translated version so we can check that the health advice was not changed during translation.</p></div>
+      </details>
+    </div>
+  </section>
+  <section>
+    <h2>Privacy</h2>
+    <div class="faq">
+      <details>
+        <summary>What data does this site collect?</summary>
+        <div class="answer"><p>Only what you type into the contact form. We use it to reply to you and nothing else. We do not sell or share it.</p></div>
+      </details>
+      <details>
+        <summary>Do you use cookies or tracking?</summary>
+        <div class="answer"><p>The portal itself does not set tracking cookies. Fonts are loaded from an external provider, which may log the request as any web request is logged.</p></div>
+      </details>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+
+
+</div>
+<div class="page" data-page="contact.html" hidden>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol><li><a href="index.html">Home</a></li><li aria-current="page">Contact</li></ol>
+  </div>
+</nav>
+
+<div class="pagehead">
+  <div class="wrap">
+    <h1>Contact</h1>
+    <p>Send us a question, report a mistake, or invite the team to run an awareness session.</p>
+  </div>
+</div>
+
+<main id="main" class="main">
+<div class="wrap layout">
+<aside>
+  <nav class="sidenav" aria-label="Section">
+    <h2>Site sections</h2>
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a class="is-active" href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebox">
+    <h3>Response time</h3>
+    <p>We reply within two working days. Reports of factual mistakes are prioritised.</p>
+  </div>
+</aside>
+
+<div class="content">
+  <section>
+    <h2>Get in touch</h2>
+    <div class="split">
+      <div>
+        <div class="table-scroll">
+          <table class="table">
+            <tbody>
+              <tr><th scope="row">Email</th><td><a href="mailto:hello@sihatbersama.my">hello@sihatbersama.my</a></td></tr>
+              <tr><th scope="row">Phone and WhatsApp</th><td><a href="https://wa.me/60167079037">+60 16-707 9037</a></td></tr>
+              <tr><th scope="row">Address</th><td>Sihat Bersama Initiative<br>Bukit Jalil, 57000 Kuala Lumpur, Malaysia</td></tr>
+              <tr><th scope="row">Office hours</th><td>Monday to Friday, 9:00am to 6:00pm<br>Closed on weekends and public holidays</td></tr>
+              <tr><th scope="row">Media enquiries</th><td>Use the form and select the media category</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Follow us</h3>
+        <div class="socials">
+          <a href="#" aria-label="Facebook" style="border-color:var(--border); color:var(--navy)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.3-1.8 1.9-1.8H17V2.7A26 26 0 0 0 14.5 2.5C11.9 2.5 10 4.1 10 7.1V10H7v4h3v8z"/></svg></a>
+          <a href="#" aria-label="Instagram" style="border-color:var(--border); color:var(--navy)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="https://wa.me/60167079037" aria-label="WhatsApp" style="border-color:var(--border); color:var(--navy)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg></a>
+        </div>
+
+        <h3>Location</h3>
+        <div style="border:1px solid var(--border); background:var(--grey); aspect-ratio:16/9; display:grid; place-items:center; text-align:center; padding:16px">
+          <p style="margin:0; color:var(--muted); font-size:.88rem">Map slot. Paste a Google Maps embed iframe here, set to width 100% and height 100%.</p>
+        </div>
+      </div>
+
+      <div>
+        <form class="form" id="contactForm" novalidate>
+          <h3 style="margin-top:0">Send us a message</h3>
+          <div class="field">
+            <label for="name">Full name <span class="req">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email address <span class="req">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <p class="hint">We use this only to reply to you.</p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 012-345 6789">
+          </div>
+          <div class="field">
+            <label for="topic">Category</label>
+            <select id="topic" name="topic">
+              <option>General enquiry</option>
+              <option>Report a mistake on a page</option>
+              <option>Invite us to a talk or campaign</option>
+              <option>Request printable materials</option>
+              <option>Media enquiry</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message <span class="req">*</span></label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn" type="submit">Submit message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+
+        <div class="notice warn" style="margin-top:18px">
+          <h3>Do not send medical details</h3>
+          <p>We cannot assess symptoms, read test results or advise on treatment. Please bring those to a doctor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+
+
+</div>
+<footer class="footer" id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Sihat Bersama</h3>
+        <p style="font-size:.86rem">A student-run health awareness portal providing free public health information to Malaysian communities. No advertising, no sign-up.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.3-1.8 1.9-1.8H17V2.7A26 26 0 0 0 14.5 2.5C11.9 2.5 10 4.1 10 7.1V10H7v4h3v8z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="https://wa.me/60167079037" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Related links</h3>
+        <ul>
+          <li><a href="https://www.moh.gov.my">Ministry of Health Malaysia</a></li>
+          <li><a href="https://www.who.int">World Health Organization</a></li>
+          <li><a href="https://www.myhealth.gov.my">MyHEALTH Portal</a></li>
+          <li><a href="https://www.malaysia.gov.my">MyGovernment Portal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <address>
+          Sihat Bersama Initiative<br>
+          Bukit Jalil, 57000 Kuala Lumpur<br>
+          Tel / WhatsApp: <a href="https://wa.me/60167079037">+60 16-707 9037</a><br>
+          Email: <a href="mailto:hello@sihatbersama.my">hello@sihatbersama.my</a><br>
+          Office hours: Mon to Fri, 9am to 6pm
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-meta">
+      <span class="counter">Total visitors: <b id="viewCount">0</b></span>
+      <span>Last updated: 28 August 2026</span>
+      <span>Best viewed in Chrome, Firefox, Edge or Safari at 1280 x 768 and above</span>
+    </div>
+
+    <div class="foot-base">
+      <span>&copy; <span data-year>2026</span> Sihat Bersama Initiative. Health education only, not medical advice.</span>
+      <span class="foot-links">
+        <a href="#">Disclaimer</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Security Policy</a>
+        <a href="#footer">Sitemap</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* ===========================================================
+   Sihat Bersama - shared scripts
+   Plain JavaScript. Each block checks whether its element
+   exists, so this one file is safe to load on every page.
+   =========================================================== */
+
+/* ---- mobile navigation ---- */
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var list = document.getElementById('navlist');
+  if (!btn || !list) return;
+  btn.addEventListener('click', function () {
+    var open = list.getAttribute('data-open') === 'true';
+    list.setAttribute('data-open', String(!open));
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+})();
+
+/* ---- text size controls (session only, no storage) ---- */
+(function () {
+  var sizes = ['87.5%', '100%', '112.5%'];
+  var current = 1;
+  function apply() { document.documentElement.style.fontSize = sizes[current]; }
+  var dec = document.getElementById('textSmaller');
+  var reset = document.getElementById('textNormal');
+  var inc = document.getElementById('textLarger');
+  if (!dec || !reset || !inc) return;
+  dec.addEventListener('click', function () { current = Math.max(0, current - 1); apply(); });
+  reset.addEventListener('click', function () { current = 1; apply(); });
+  inc.addEventListener('click', function () { current = Math.min(sizes.length - 1, current + 1); apply(); });
+})();
+
+/* ---- current year in footer ---- */
+(function () {
+  var y = document.querySelectorAll('[data-year]');
+  var now = new Date().getFullYear();
+  for (var i = 0; i < y.length; i++) y[i].textContent = now;
+})();
+
+/* ---- visitor counter (display only) ----
+   Wire this to your own backend to make it real, for example:
+   fetch('/api/views', {method:'POST'}).then(r=>r.json()).then(d=>{ el.textContent = d.total.toLocaleString(); });
+   Laravel: Route::post('/api/views', fn() => ['total' => Cache::increment('page_views')]);
+------------------------------------------------------------ */
+(function () {
+  var el = document.getElementById('viewCount');
+  if (!el) return;
+  var total = 12480;
+  el.textContent = total.toLocaleString();
+})();
+
+/* ---- gallery category filter ---- */
+(function () {
+  var buttons = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('.photo');
+  if (!buttons.length || !items.length) return;
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      var cat = this.getAttribute('data-filter');
+      for (var b = 0; b < buttons.length; b++) {
+        buttons[b].setAttribute('aria-pressed', String(buttons[b] === this));
+      }
+      for (var n = 0; n < items.length; n++) {
+        var show = cat === 'all' || items[n].getAttribute('data-cat') === cat;
+        items[n].style.display = show ? '' : 'none';
+      }
+    });
+  }
+})();
+
+/* ---- contact form validation (front end only) ---- */
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = document.getElementById('formStatus');
+    var name = form.querySelector('#name').value.trim();
+    var email = form.querySelector('#email').value.trim();
+    var message = form.querySelector('#message').value.trim();
+    status.className = 'form-status error';
+
+    if (!name) { status.textContent = 'Enter your name.'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { status.textContent = 'Enter a valid email address.'; return; }
+    if (message.length < 10) { status.textContent = 'Your message is too short. Give us a little more detail.'; return; }
+
+    status.className = 'form-status';
+    status.textContent = 'Form validated. Connect it to a backend endpoint to deliver the message.';
+    form.reset();
+  });
+})();
+
+/* ---- search box placeholder behaviour ---- */
+(function () {
+  var search = document.getElementById('siteSearch');
+  if (!search) return;
+  search.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = this.querySelector('input').value.trim();
+    alert(q ? 'Search is not connected yet. Query: ' + q : 'Type something to search.');
+  });
+})();
+
+</script>
+
+<script>
+/* preview shim: swaps pages inside one file. The real site is six separate HTML files. */
+function showPage(file){
+  document.querySelectorAll('.page').forEach(function(el){ el.hidden = el.dataset.page !== file; });
+  document.querySelectorAll('#navlist a').forEach(function(a){
+    a.classList.toggle('is-active', a.getAttribute('href') === file);
+  });
+  window.scrollTo(0,0);
+}
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a'); if(!a) return;
+  var m = (a.getAttribute('href')||'').match(/^([a-z]+\.html)(#.*)?$/); if(!m) return;
+  e.preventDefault(); showPage(m[1]);
+  if(m[2]){ var t = document.querySelector(m[2]); if(t) t.scrollIntoView(); }
+});
+showPage('index.html');
+</script>
+
+</body>
+</html>

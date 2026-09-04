@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | Sihat Bersama Health Awareness Portal</title>
+<meta name="description" content="Public health information portal on disease prevention, hygiene, vaccination, healthy living and early detection for Malaysian communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== utility bar ===== -->
+<div class="utilbar">
+  <div class="wrap utilbar-in">
+    <span class="util-official">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z"/></svg>
+      Health awareness portal by the Sihat Bersama student initiative
+    </span>
+    <span class="util-links">
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#footer">Sitemap</a>
+    </span>
+    <span class="util-tools">
+      <button class="a11y-btn" id="textSmaller" type="button" title="Smaller text">A-</button>
+      <button class="a11y-btn" id="textNormal" type="button" title="Normal text">A</button>
+      <button class="a11y-btn" id="textLarger" type="button" title="Larger text">A+</button>
+    </span>
+  </div>
+</div>
+
+<!-- ===== masthead ===== -->
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-crest" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 3l26 9v18c0 16-11 26-26 31C17 56 6 46 6 30V12z" fill="#0B3A63"/>
+        <path d="M32 9l20 7v14c0 12.5-8.4 20.6-20 24.6C20.4 50.6 12 42.5 12 30V16z" fill="#14639E"/>
+        <path d="M16 32h8l4-9 5 18 4-9h11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 20h6v4h4v6h-4v4h-6v-4h-4v-6h4z" fill="#B3892A"/>
+      </svg>
+      <span>
+        <span class="site-name">Sihat Bersama</span>
+        <span class="site-sub">Health Awareness &amp; Disease Prevention Portal</span>
+      </span>
+    </a>
+    <form class="searchbox" id="siteSearch" role="search">
+      <label class="skip" for="q">Search this site</label>
+      <input id="q" type="search" placeholder="Search health topics">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</header>
+
+<!-- ===== main navigation ===== -->
+<nav class="mainnav" aria-label="Main">
+  <div class="wrap mainnav-in">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlist">
+      <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="2"/></svg>
+      Menu
+    </button>
+    <ul id="navlist">
+      <li><a class="is-active" href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ===== hero ===== -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <h1>Public health information you can act on</h1>
+      <p>Sihat Bersama explains how diseases spread in Malaysian homes, schools and workplaces, what causes them, and the practical steps that stop them. Written in plain language, reviewed against Ministry of Health and World Health Organization guidance.</p>
+      <div class="hero-actions">
+        <a class="btn" href="services.html">Browse health topics</a>
+        <a class="btn btn-alt" href="about.html">About this initiative</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 520 340" role="img" aria-label="Illustration of a community clinic and neighbourhood">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F5FAFF"/><stop offset="1" stop-color="#E4F1FD"/>
+          </linearGradient>
+        </defs>
+        <rect width="520" height="340" rx="12" fill="url(#sky)"/>
+        <circle cx="440" cy="72" r="34" fill="#DCEDFD"/>
+        <circle cx="440" cy="72" r="19" fill="#3FB0F5" opacity=".55"/>
+        <path d="M0 236c90-38 150-6 230-26s170-48 290-10v140H0z" fill="#CDE6FB"/>
+        <path d="M0 280c110-28 190 4 270-12s160-26 250-4v76H0z" fill="#A8D5F7"/>
+        <g fill="#fff" stroke="#BBDCF6" stroke-width="1.5">
+          <path d="M70 214l46-32 46 32v58H70z"/>
+          <path d="M196 228l40-28 40 28v44h-80z"/>
+          <path d="M306 210l50-34 50 34v62H306z"/>
+        </g>
+        <g fill="#7FC3F2">
+          <rect x="90" y="228" width="18" height="18" rx="3"/>
+          <rect x="124" y="228" width="18" height="18" rx="3"/>
+          <rect x="224" y="240" width="16" height="16" rx="3"/>
+          <rect x="336" y="228" width="20" height="20" rx="3"/>
+          <rect x="368" y="228" width="20" height="20" rx="3"/>
+        </g>
+        <rect x="228" y="150" width="14" height="42" rx="4" fill="#1E6FE8"/>
+        <rect x="214" y="164" width="42" height="14" rx="4" fill="#1E6FE8"/>
+        <path d="M0 120h130l24-52 30 100 26-70 24 22h286" fill="none" stroke="#1B4DC1" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== announcements ===== -->
+<div class="announce">
+  <div class="wrap announce-in">
+    <strong>Latest:</strong>
+    <ul>
+      <li><a href="services.html">New guide on weekly Aedes checks at home</a></li>
+      <li><a href="faq.html">Updated answers on adult vaccination</a></li>
+      <li><a href="gallery.html">Photos from the school hygiene roadshow</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== quick access ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Main topics</h2>
+      <p>Seven areas of public health, each written for readers with no medical background.</p>
+    </div>
+
+    <div class="tiles">
+      <a class="tile" href="services.html#prevention">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2M9.5 10h.01M14 14h.01M10 15h.01M15 9.5h.01"/></svg></span>
+        <h3>Disease prevention</h3>
+        <p>Common diseases and how to stop them spreading.</p>
+      </a>
+      <a class="tile" href="services.html#hygiene">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 11V5a2 2 0 0 1 4 0v6"/><path d="M5 11h13a2 2 0 0 1 2 2v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3a2 2 0 0 1 1-2z"/></svg></span>
+        <h3>Health and hygiene</h3>
+        <p>Handwashing, food safety and a clean home.</p>
+      </a>
+      <a class="tile" href="services.html#vaccination">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17 3l4 4M18.5 5.5L12 12l-4 1 1-4z"/><path d="M11 9l4 4M4 20l4-4"/></svg></span>
+        <h3>Vaccination</h3>
+        <p>How vaccines work and who they protect.</p>
+      </a>
+      <a class="tile" href="services.html#lifestyle">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0z"/><path d="M12 3c2 2 2 4 0 6M8 5c1.4 1.4 1.4 2.6 0 4"/></svg></span>
+        <h3>Healthy lifestyle</h3>
+        <p>Nutrition, exercise, sleep and daily habits.</p>
+      </a>
+      <a class="tile" href="services.html#detection">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5M11 8.5v5"/></svg></span>
+        <h3>Early detection</h3>
+        <p>Warning signs and screening by age group.</p>
+      </a>
+      <a class="tile" href="services.html#education">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2z"/></svg></span>
+        <h3>Health education</h3>
+        <p>Articles, guides and printable resources.</p>
+      </a>
+      <a class="tile" href="services.html#community">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></span>
+        <h3>Community awareness</h3>
+        <p>Campaign materials for schools and workplaces.</p>
+      </a>
+      <a class="tile" href="contact.html">
+        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <h3>Contact us</h3>
+        <p>Questions, corrections and talk invitations.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== common cases table ===== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Common health problems in Malaysia</h2>
+      <p>What causes them, and the action that makes the biggest difference.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="table">
+        <caption>Summary of frequently reported conditions. Refer to a clinic for diagnosis and treatment.</caption>
+        <thead>
+          <tr><th scope="col">Condition</th><th scope="col">Type</th><th scope="col">Main cause</th><th scope="col">What to do</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dengue</strong></td>
+            <td>Mosquito-borne</td>
+            <td>Aedes mosquitoes breeding in clean, still water around the house.</td>
+            <td>Empty and scrub water containers weekly, cover tanks, use repellent, see a doctor early if fever comes with body aches or rash.</td>
+          </tr>
+          <tr>
+            <td><strong>Type 2 diabetes</strong></td>
+            <td>Non-communicable</td>
+            <td>Sweet drinks, refined carbohydrates, low activity and extra weight around the waist.</td>
+            <td>Cut sugared drinks first, walk 30 minutes most days, ask for a blood sugar test if there is family history.</td>
+          </tr>
+          <tr>
+            <td><strong>High blood pressure</strong></td>
+            <td>Non-communicable</td>
+            <td>Salty and processed food, low activity, poor sleep and long-term stress.</td>
+            <td>Taste food before adding salt or sauce, cook at home more often, check your reading at least once a year.</td>
+          </tr>
+          <tr>
+            <td><strong>Obesity</strong></td>
+            <td>Risk factor</td>
+            <td>Large portions of fried and sweetened food, late-night eating, long hours seated.</td>
+            <td>Change one meal a day rather than the whole diet, drink plain water, build movement into the daily routine.</td>
+          </tr>
+          <tr>
+            <td><strong>Tuberculosis</strong></td>
+            <td>Airborne, curable</td>
+            <td>Bacteria spread in crowded, poorly ventilated spaces, often ignored as a long cough.</td>
+            <td>Get tested if a cough lasts more than two weeks, keep rooms ventilated, complete the full treatment course.</td>
+          </tr>
+          <tr>
+            <td><strong>Hand, foot and mouth disease</strong></td>
+            <td>Viral, children</td>
+            <td>Virus passed through saliva, unwashed hands and shared toys in nurseries and kindergartens.</td>
+            <td>Wash hands with soap, disinfect toys and surfaces, keep a sick child at home until recovered.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice warn" style="margin-top:18px">
+      <h3>This portal does not replace medical care</h3>
+      <p>All content here is general health education. If you have symptoms that worry you, go to the nearest clinic or hospital and speak to a medical professional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== purpose + updates ===== -->
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <div class="sec-head"><h2>Why this portal exists</h2></div>
+      <p>Public health protects whole communities rather than treating one patient at a time. Clean water, handwashing, vaccination and early screening prevent far more illness than any medicine taken after the fact.</p>
+      <p>Most health information online is either too technical or plainly wrong. We collect what matters, rewrite it in plain language, and point readers to the right service when professional care is needed.</p>
+      <p><a href="about.html">Read our mission and vision</a></p>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Recent updates</h2></div>
+      <ul class="updates">
+        <li><time datetime="2026-08-28">28 Aug 2026</time><a href="services.html#prevention">Dengue prevention guide revised for the rainy season</a></li>
+        <li><time datetime="2026-08-14">14 Aug 2026</time><a href="services.html#vaccination">Adult vaccination page updated</a></li>
+        <li><time datetime="2026-07-30">30 Jul 2026</time><a href="gallery.html">School hygiene roadshow photos published</a></li>
+        <li><time datetime="2026-07-11">11 Jul 2026</time><a href="services.html#detection">Screening checklist added for ages 30 and above</a></li>
+        <li><time datetime="2026-06-25">25 Jun 2026</time><a href="faq.html">Six new questions added to the FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== footer ===== -->
+<footer class="footer" id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Sihat Bersama</h3>
+        <p style="font-size:.86rem">A student-run health awareness portal providing free public health information to Malaysian communities. No advertising, no sign-up.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.3-1.8 1.9-1.8H17V2.7A26 26 0 0 0 14.5 2.5C11.9 2.5 10 4.1 10 7.1V10H7v4h3v8z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="https://wa.me/60167079037" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Related links</h3>
+        <ul>
+          <li><a href="https://www.moh.gov.my">Ministry of Health Malaysia</a></li>
+          <li><a href="https://www.who.int">World Health Organization</a></li>
+          <li><a href="https://www.myhealth.gov.my">MyHEALTH Portal</a></li>
+          <li><a href="https://www.malaysia.gov.my">MyGovernment Portal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <address>
+          Sihat Bersama Initiative<br>
+          Bukit Jalil, 57000 Kuala Lumpur<br>
+          Tel / WhatsApp: <a href="https://wa.me/60167079037">+60 16-707 9037</a><br>
+          Email: <a href="mailto:hello@sihatbersama.my">hello@sihatbersama.my</a><br>
+          Office hours: Mon to Fri, 9am to 6pm
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-meta">
+      <span class="counter">Total visitors: <b id="viewCount">0</b></span>
+      <span>Last updated: 28 August 2026</span>
+      <span>Best viewed in Chrome, Firefox, Edge or Safari at 1280 x 768 and above</span>
+    </div>
+
+    <div class="foot-base">
+      <span>&copy; <span data-year>2026</span> Sihat Bersama Initiative. Health education only, not medical advice.</span>
+      <span class="foot-links">
+        <a href="#">Disclaimer</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Security Policy</a>
+        <a href="#footer">Sitemap</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
