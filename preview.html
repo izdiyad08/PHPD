@@ -163,7 +163,7 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   border-radius:var(--r-lg); overflow:hidden; background:linear-gradient(160deg,#EAF4FE,#F7FBFF);
   border:1px solid var(--border); padding:18px; box-shadow:var(--shadow-card);
 }
-.hero-art svg{width:100%; height:auto; border-radius:var(--r)}
+.hero-art svg, .hero-art img{width:100%; height:auto; display:block; border-radius:var(--r)}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -441,33 +441,7 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
       </div>
     </div>
     <div class="hero-art">
-      <svg viewBox="0 0 520 340" role="img" aria-label="Illustration of a community clinic and neighbourhood">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#F5FAFF"/><stop offset="1" stop-color="#E4F1FD"/>
-          </linearGradient>
-        </defs>
-        <rect width="520" height="340" rx="12" fill="url(#sky)"/>
-        <circle cx="440" cy="72" r="34" fill="#DCEDFD"/>
-        <circle cx="440" cy="72" r="19" fill="#3FB0F5" opacity=".55"/>
-        <path d="M0 236c90-38 150-6 230-26s170-48 290-10v140H0z" fill="#CDE6FB"/>
-        <path d="M0 280c110-28 190 4 270-12s160-26 250-4v76H0z" fill="#A8D5F7"/>
-        <g fill="#fff" stroke="#BBDCF6" stroke-width="1.5">
-          <path d="M70 214l46-32 46 32v58H70z"/>
-          <path d="M196 228l40-28 40 28v44h-80z"/>
-          <path d="M306 210l50-34 50 34v62H306z"/>
-        </g>
-        <g fill="#7FC3F2">
-          <rect x="90" y="228" width="18" height="18" rx="3"/>
-          <rect x="124" y="228" width="18" height="18" rx="3"/>
-          <rect x="224" y="240" width="16" height="16" rx="3"/>
-          <rect x="336" y="228" width="20" height="20" rx="3"/>
-          <rect x="368" y="228" width="20" height="20" rx="3"/>
-        </g>
-        <rect x="228" y="150" width="14" height="42" rx="4" fill="#1E6FE8"/>
-        <rect x="214" y="164" width="42" height="14" rx="4" fill="#1E6FE8"/>
-        <path d="M0 120h130l24-52 30 100 26-70 24 22h286" fill="none" stroke="#1B4DC1" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
-      </svg>
+      <img src="assets/img/hero-community.jpg" alt="Four young Malaysian adults talking and smiling in a bright community centre lobby" width="1400" height="875" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>

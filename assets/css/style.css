@@ -153,7 +153,7 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   border-radius:var(--r-lg); overflow:hidden; background:linear-gradient(160deg,#EAF4FE,#F7FBFF);
   border:1px solid var(--border); padding:18px; box-shadow:var(--shadow-card);
 }
-.hero-art svg{width:100%; height:auto; border-radius:var(--r)}
+.hero-art svg, .hero-art img{width:100%; height:auto; display:block; border-radius:var(--r)}
 
 /* ---------- buttons ---------- */
 .btn{
