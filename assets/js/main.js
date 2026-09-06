@@ -100,3 +100,57 @@
     alert(q ? 'Search is not connected yet. Query: ' + q : 'Type something to search.');
   });
 })();
+
+/* ---- poster lightbox ---- */
+(function () {
+  var links = document.querySelectorAll('.poster a');
+  if (!links.length) return;
+
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.setAttribute('hidden', '');
+  box.innerHTML =
+    '<div class="lightbox-in" role="dialog" aria-modal="true" aria-label="Poster, full size">' +
+      '<img alt="">' +
+      '<button type="button" class="lightbox-close" aria-label="Close poster">&times;</button>' +
+    '</div>';
+  document.body.appendChild(box);
+
+  var img = box.querySelector('img');
+  var closeBtn = box.querySelector('.lightbox-close');
+  var opener = null;
+
+  function open(href, alt, from) {
+    opener = from;
+    img.setAttribute('src', href);
+    img.setAttribute('alt', alt || '');
+    box.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function close() {
+    box.setAttribute('hidden', '');
+    img.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (opener) opener.focus();
+  }
+
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var inner = this.querySelector('img');
+      open(this.getAttribute('href'), inner ? inner.getAttribute('alt') : '', this);
+    });
+  }
+
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target === box.firstChild) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (box.hasAttribute('hidden')) return;
+    if (e.key === 'Escape' || e.keyCode === 27) close();
+    if (e.key === 'Tab' || e.keyCode === 9) { e.preventDefault(); closeBtn.focus(); }
+  });
+})();

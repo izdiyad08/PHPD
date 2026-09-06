@@ -360,6 +360,23 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   .hero,.pagehead{background:none; border:0}
 }
 
+
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed; inset:0; z-index:400; background:rgba(8,22,40,.84); display:grid; place-items:center; padding:28px}
+.lightbox[hidden]{display:none}
+.lightbox-in{position:relative; max-width:min(96vw,880px); max-height:92vh}
+.lightbox-in img{display:block; width:auto; height:auto; max-width:100%; max-height:92vh; border-radius:var(--r); box-shadow:0 26px 70px rgba(0,0,0,.5)}
+.lightbox-close{
+  position:absolute; top:-16px; right:-16px; width:42px; height:42px; border-radius:50%;
+  border:1px solid var(--border); background:#fff; color:var(--brand-deep);
+  font:400 1.6rem/1 var(--sans); cursor:pointer; box-shadow:var(--shadow-card);
+}
+.lightbox-close:hover{background:var(--tint); color:var(--brand)}
+.lightbox-close:focus-visible{outline:3px solid var(--cyan); outline-offset:2px}
+@media (max-width:560px){
+  .lightbox{padding:14px}
+  .lightbox-close{top:6px; right:6px; width:38px; height:38px}
+}
 </style>
 </head>
 <body>
@@ -772,8 +789,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <h3>Benefit</h3>
     <p>Readers learn which single action matters most for each disease instead of a long list they will not follow.</p>
     <figure class="poster">
-      <a href="assets/img/f6d2f9d5-638b-4017-944b-dd46eb1b4ea0.jpeg" target="_blank" rel="noopener"><img src="assets/img/f6d2f9d5-638b-4017-944b-dd46eb1b4ea0.jpeg" alt="Disease prevention poster listing handwashing, masks, vaccination, healthy eating, staying active and keeping surroundings clean" loading="lazy" width="1400" height="933"></a>
-      <figcaption><b>Disease prevention poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/f6d2f9d5-638b-4017-944b-dd46eb1b4ea0.jpeg"><img src="assets/img/f6d2f9d5-638b-4017-944b-dd46eb1b4ea0.jpeg" alt="Disease prevention poster listing handwashing, masks, vaccination, healthy eating, staying active and keeping surroundings clean" loading="lazy" width="1400" height="933"></a>
+      <figcaption><b>Disease prevention poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -783,8 +800,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <h3>Benefit</h3>
     <p>These habits cost nothing and prevent a large share of common infections, especially in households with young children or older adults.</p>
     <figure class="poster">
-      <a href="assets/img/170c4d66-a1b8-4d6c-b10e-c3fae617a127.jpeg" target="_blank" rel="noopener"><img src="assets/img/170c4d66-a1b8-4d6c-b10e-c3fae617a127.jpeg" alt="Health and hygiene poster showing handwashing, masks, vaccination, clean surroundings, healthy eating and waste disposal" loading="lazy" width="1400" height="933"></a>
-      <figcaption><b>Health and hygiene poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/170c4d66-a1b8-4d6c-b10e-c3fae617a127.jpeg"><img src="assets/img/170c4d66-a1b8-4d6c-b10e-c3fae617a127.jpeg" alt="Health and hygiene poster showing handwashing, masks, vaccination, clean surroundings, healthy eating and waste disposal" loading="lazy" width="1400" height="933"></a>
+      <figcaption><b>Health and hygiene poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -794,8 +811,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <h3>Benefit</h3>
     <p>Parents and adults get answers to the questions that usually cause hesitation, with links to the official schedule rather than rumours from social media.</p>
     <figure class="poster tall">
-      <a href="assets/img/d26012d5-cba6-4bc7-ae34-fedbc9604052.jpeg" target="_blank" rel="noopener"><img src="assets/img/d26012d5-cba6-4bc7-ae34-fedbc9604052.jpeg" alt="Vaccination awareness poster covering how vaccines work, the childhood immunisation schedule, adult vaccines and common side effects" loading="lazy" width="933" height="1400"></a>
-      <figcaption><b>Vaccination awareness poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/d26012d5-cba6-4bc7-ae34-fedbc9604052.jpeg"><img src="assets/img/d26012d5-cba6-4bc7-ae34-fedbc9604052.jpeg" alt="Vaccination awareness poster covering how vaccines work, the childhood immunisation schedule, adult vaccines and common side effects" loading="lazy" width="933" height="1400"></a>
+      <figcaption><b>Vaccination awareness poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -805,8 +822,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <h3>Benefit</h3>
     <p>Small, realistic changes that lower the risk of diabetes, high blood pressure and heart disease over time.</p>
     <figure class="poster tall">
-      <a href="assets/img/20b44db8-fa39-4f53-8271-1c2aa3526a23.jpeg" target="_blank" rel="noopener"><img src="assets/img/20b44db8-fa39-4f53-8271-1c2aa3526a23.jpeg" alt="Healthy lifestyle poster covering nutrition, physical activity, sleep and stress management with local food swaps" loading="lazy" width="933" height="1400"></a>
-      <figcaption><b>Healthy lifestyle poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/20b44db8-fa39-4f53-8271-1c2aa3526a23.jpeg"><img src="assets/img/20b44db8-fa39-4f53-8271-1c2aa3526a23.jpeg" alt="Healthy lifestyle poster covering nutrition, physical activity, sleep and stress management with local food swaps" loading="lazy" width="933" height="1400"></a>
+      <figcaption><b>Healthy lifestyle poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -818,8 +835,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
       <p>A cough lasting more than two weeks, unexplained weight loss, a lump that does not go away, or blood where there should be none are all reasons to see a doctor without waiting.</p>
     </div>
     <figure class="poster tall">
-      <a href="assets/img/poster-early-detection.jpg" target="_blank" rel="noopener"><img src="assets/img/poster-early-detection.jpg" alt="Early detection poster listing the blood pressure, blood sugar, cholesterol, weight and cancer screenings to request from the 18-30s through to 60 and above" loading="lazy" width="989" height="1400"></a>
-      <figcaption><b>Early detection poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/poster-early-detection.jpg"><img src="assets/img/poster-early-detection.jpg" alt="Early detection poster listing the blood pressure, blood sugar, cholesterol, weight and cancer screenings to request from the 18-30s through to 60 and above" loading="lazy" width="989" height="1400"></a>
+      <figcaption><b>Early detection poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -827,8 +844,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <h2>Health education</h2>
     <p>Short articles, step-by-step guides and printable resources written for the general public. Teachers may use them in class, and community groups may reproduce them with credit.</p>
     <figure class="poster tall">
-      <a href="assets/img/poster-health-education.jpg" target="_blank" rel="noopener"><img src="assets/img/poster-health-education.jpg" alt="Health education poster describing easy to read articles, step-by-step guides, printable resources, and material for teachers and community groups" loading="lazy" width="991" height="1400"></a>
-      <figcaption><b>Health education poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/poster-health-education.jpg"><img src="assets/img/poster-health-education.jpg" alt="Health education poster describing easy to read articles, step-by-step guides, printable resources, and material for teachers and community groups" loading="lazy" width="991" height="1400"></a>
+      <figcaption><b>Health education poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -837,8 +854,8 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
     <p>Materials and simple activity plans for running an awareness session in a school, office or neighbourhood: poster templates, a talk outline, a checklist for a residential Aedes walkabout, and follow-up ideas.</p>
     <p><a href="contact.html">Invite us to run a session</a> if your group would like help getting started.</p>
     <figure class="poster tall">
-      <a href="assets/img/poster-community-awareness.jpg" target="_blank" rel="noopener"><img src="assets/img/poster-community-awareness.jpg" alt="Community awareness poster showing poster templates, a talk outline, an Aedes walkabout checklist and follow-up ideas for running an awareness session" loading="lazy" width="989" height="1400"></a>
-      <figcaption><b>Community awareness poster.</b> Select the poster to open the full-size version for printing or sharing.</figcaption>
+      <a href="assets/img/poster-community-awareness.jpg"><img src="assets/img/poster-community-awareness.jpg" alt="Community awareness poster showing poster templates, a talk outline, an Aedes walkabout checklist and follow-up ideas for running an awareness session" loading="lazy" width="989" height="1400"></a>
+      <figcaption><b>Community awareness poster.</b> Select the poster to view it full size.</figcaption>
     </figure>
   </section>
 
@@ -1362,6 +1379,61 @@ document.addEventListener('click', function(e){
   if(m[2]){ var t = document.querySelector(m[2]); if(t) t.scrollIntoView(); }
 });
 showPage('index.html');
+
+/* ---- poster lightbox ---- */
+(function () {
+  var links = document.querySelectorAll('.poster a');
+  if (!links.length) return;
+
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.setAttribute('hidden', '');
+  box.innerHTML =
+    '<div class="lightbox-in" role="dialog" aria-modal="true" aria-label="Poster, full size">' +
+      '<img alt="">' +
+      '<button type="button" class="lightbox-close" aria-label="Close poster">&times;</button>' +
+    '</div>';
+  document.body.appendChild(box);
+
+  var img = box.querySelector('img');
+  var closeBtn = box.querySelector('.lightbox-close');
+  var opener = null;
+
+  function open(href, alt, from) {
+    opener = from;
+    img.setAttribute('src', href);
+    img.setAttribute('alt', alt || '');
+    box.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function close() {
+    box.setAttribute('hidden', '');
+    img.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (opener) opener.focus();
+  }
+
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var inner = this.querySelector('img');
+      open(this.getAttribute('href'), inner ? inner.getAttribute('alt') : '', this);
+    });
+  }
+
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target === box.firstChild) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (box.hasAttribute('hidden')) return;
+    if (e.key === 'Escape' || e.keyCode === 27) close();
+    if (e.key === 'Tab' || e.keyCode === 9) { e.preventDefault(); closeBtn.focus(); }
+  });
+})();
+
 </script>
 
 </body>

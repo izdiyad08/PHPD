@@ -357,3 +357,20 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   body{font-size:11pt}
   .hero,.pagehead{background:none; border:0}
 }
+
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed; inset:0; z-index:400; background:rgba(8,22,40,.84); display:grid; place-items:center; padding:28px}
+.lightbox[hidden]{display:none}
+.lightbox-in{position:relative; max-width:min(96vw,880px); max-height:92vh}
+.lightbox-in img{display:block; width:auto; height:auto; max-width:100%; max-height:92vh; border-radius:var(--r); box-shadow:0 26px 70px rgba(0,0,0,.5)}
+.lightbox-close{
+  position:absolute; top:-16px; right:-16px; width:42px; height:42px; border-radius:50%;
+  border:1px solid var(--border); background:#fff; color:var(--brand-deep);
+  font:400 1.6rem/1 var(--sans); cursor:pointer; box-shadow:var(--shadow-card);
+}
+.lightbox-close:hover{background:var(--tint); color:var(--brand)}
+.lightbox-close:focus-visible{outline:3px solid var(--cyan); outline-offset:2px}
+@media (max-width:560px){
+  .lightbox{padding:14px}
+  .lightbox-close{top:6px; right:6px; width:38px; height:38px}
+}
