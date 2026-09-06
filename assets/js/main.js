@@ -103,7 +103,7 @@
 
 /* ---- poster lightbox ---- */
 (function () {
-  var links = document.querySelectorAll('.poster a');
+  var links = document.querySelectorAll('.poster a, .photo .frame a');
   if (!links.length) return;
 
   var box = document.createElement('div');
