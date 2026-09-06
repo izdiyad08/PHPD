@@ -94,11 +94,17 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
 .searchbox button:hover{filter:brightness(1.06)}
 
 /* ---------- floating pill navigation ---------- */
-.mainnav{position:sticky; top:12px; z-index:60; background:transparent; padding-block:6px 14px}
+.mainnav{position:sticky; top:10px; z-index:60; background:transparent; padding-block:6px 14px}
 .mainnav-in{
   display:flex; align-items:center; justify-content:center;
-  background:#EDF3FB; border:1px solid #DEE9F7; border-radius:999px;
-  padding:6px 14px; box-shadow:var(--shadow-card);
+  width:fit-content; max-width:100%; margin-inline:auto;
+  background:transparent; border:1px solid transparent; border-radius:999px;
+  padding:6px 14px; box-shadow:none;
+  transition:background .22s ease, border-color .22s ease, box-shadow .22s ease, padding .22s ease;
+}
+.mainnav.is-stuck .mainnav-in{
+  background:rgba(255,255,255,.88); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  border-color:var(--border); box-shadow:0 10px 30px rgba(11,58,99,.13); padding:4px 12px;
 }
 .nav-toggle{
   display:none; background:transparent; border:0; color:var(--brand); padding:12px 6px;
@@ -110,7 +116,7 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   display:block; color:#42546B; text-decoration:none; padding:11px 20px;
   font-size:.95rem; font-weight:500; border-radius:999px; transition:.16s;
 }
-.mainnav a:hover{background:#fff; color:var(--brand)}
+.mainnav a:hover{background:var(--tint); color:var(--brand)}
 .mainnav a.is-active{background:var(--blue-grad); color:#fff; font-weight:600; box-shadow:0 4px 14px rgba(30,111,232,.32)}
 
 /* ---------- breadcrumb ---------- */
@@ -342,7 +348,7 @@ code{background:var(--tint); border:1px solid var(--border); border-radius:6px; 
   .searchbox{width:100%}
   .searchbox input{width:100%}
   .mainnav{top:0; padding-block:4px 12px}
-  .mainnav-in{border-radius:var(--r); flex-direction:column; align-items:stretch; padding:6px 10px}
+  .mainnav-in{width:auto; border-radius:var(--r); flex-direction:column; align-items:stretch; padding:6px 10px}
   .nav-toggle{display:flex; justify-content:space-between}
   .mainnav ul{display:none; flex-direction:column; width:100%; padding-bottom:8px; gap:2px}
   .mainnav ul[data-open="true"]{display:flex}
@@ -1431,6 +1437,20 @@ showPage('index.html');
   });
 })();
 
+
+/* ---- floating navigation: solid pill only once the page scrolls ---- */
+(function () {
+  var nav = document.querySelector('.mainnav');
+  if (!nav) return;
+  var ticking = false;
+  function sync() { nav.classList.toggle('is-stuck', window.pageYOffset > 24); ticking = false; }
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(sync);
+  }, { passive: true });
+  sync();
+})();
 </script>
 
 </body>

@@ -154,3 +154,23 @@
     if (e.key === 'Tab' || e.keyCode === 9) { e.preventDefault(); closeBtn.focus(); }
   });
 })();
+
+/* ---- floating navigation: solid pill only once the page scrolls ---- */
+(function () {
+  var nav = document.querySelector('.mainnav');
+  if (!nav) return;
+  var ticking = false;
+
+  function sync() {
+    nav.classList.toggle('is-stuck', window.pageYOffset > 24);
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(sync);
+  }, { passive: true });
+
+  sync();
+})();
