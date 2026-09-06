@@ -157,7 +157,7 @@
 
 /* ---- floating navigation: solid pill only once the page scrolls ---- */
 (function () {
-  var nav = document.querySelector('.mainnav');
+  var nav = document.querySelector('.siteheader');
   if (!nav) return;
   var ticking = false;
 
